@@ -116,7 +116,7 @@ $ cmake .
 -- Build files have been written to: /home/cobalt/repos/fann
 ```
 
-Install:
+### Install:
 
 ```shell
 $ sudo make install
@@ -163,4 +163,118 @@ Install the project...
 -- Installing: /usr/local/include/fann_training_data_cpp.h
 -- Installing: /usr/local/include/parallel_fann.h
 -- Installing: /usr/local/include/parallel_fann.hpp
+```
+### XOR Sample Train:
+
+```shell
+$ ls
+cascade_train.c  momentums.c  parallel_train.c  scaling_test.c   simple_test.c   steepness_train.c  xor_sample.cpp  xor_test.c
+Makefile         mushroom.c   robot.c           scaling_train.c  simple_train.c  xor.data           xor_test        xor_train.c
+
+$ g++ xor_train.c -o xor_train -lfann -lm
+
+$ ls
+cascade_train.c  momentums.c  parallel_train.c  scaling_test.c   simple_test.c   steepness_train.c  xor_sample.cpp  xor_test.c  xor_train.c
+Makefile         mushroom.c   robot.c           scaling_train.c  simple_train.c  xor.data           xor_test        xor_train
+
+$ cat xor.data
+4 2 1
+-1 -1
+-1
+-1 1
+1
+1 -1
+1
+1 1
+-1
+
+$ ./xor_train xor.data 
+Creating network.
+Training network.
+Max epochs     1000. Desired error: 0.0000000000.
+Epochs            1. Current error: 0.2890214324. Bit fail 4.
+Epochs           10. Current error: 0.1758149415. Bit fail 4.
+Epochs           20. Current error: 0.0201370474. Bit fail 4.
+Epochs           30. Current error: 0.0011721312. Bit fail 4.
+Epochs           40. Current error: 0.0000835651. Bit fail 2.
+Epochs           45. Current error: 0.0000196561. Bit fail 0.
+Testing network. 0.000008
+XOR test (-1.000000,-1.000000) -> -0.994789, should be -1.000000, difference=0.005211
+XOR test (-1.000000,1.000000) -> 0.993131, should be 1.000000, difference=0.006869
+XOR test (1.000000,-1.000000) -> 0.996434, should be 1.000000, difference=0.003566
+XOR test (1.000000,1.000000) -> -0.993053, should be -1.000000, difference=0.006947
+Saving network.
+Cleaning up.
+
+
+$ ls
+cascade_train.c  mushroom.c        scaling_test.c   simple_train.c     xor_fixed.data  xor_sample.cpp  xor_train
+Makefile         parallel_train.c  scaling_train.c  steepness_train.c  xor_fixed.net   xor_test        xor_train.c
+momentums.c      robot.c           simple_test.c    xor.data           xor_float.net   xor_test.c
+```
+
+### Testing XOR:
+
+```shell
+$ g++ xor_test.c -o xor_test -lfann -lm
+$ ./xor_test
+Creating network.
+Layer / Neuron 0123456
+L   1 / N    3 lBa....
+L   1 / N    4 Ccc....
+L   1 / N    5 CCC....
+L   1 / N    6 .......
+L   2 / N    7 ...DDDA
+L   2 / N    8 .......
+Input layer                          :   2 neurons, 1 bias
+  Hidden layer                       :   3 neurons, 1 bias
+Output layer                         :   1 neurons
+Total neurons and biases             :   8
+Total connections                    :  13
+Connection rate                      :   1.000
+Network type                         :   FANN_NETTYPE_LAYER
+Training algorithm                   :   FANN_TRAIN_RPROP
+Training error function              :   FANN_ERRORFUNC_TANH
+Training stop function               :   FANN_STOPFUNC_BIT
+Bit fail limit                       :   0.010
+Learning rate                        :   0.700
+Learning momentum                    :   0.000
+Quickprop decay                      :  -0.000100
+Quickprop mu                         :   1.750
+RPROP increase factor                :   1.200
+RPROP decrease factor                :   0.500
+RPROP delta min                      :   0.000
+RPROP delta max                      :  50.000
+Cascade output change fraction       :   0.010000
+Cascade candidate change fraction    :   0.010000
+Cascade output stagnation epochs     :  12
+Cascade candidate stagnation epochs  :  12
+Cascade max output epochs            : 150
+Cascade min output epochs            :  50
+Cascade max candidate epochs         : 150
+Cascade min candidate epochs         :  50
+Cascade weight multiplier            :   0.400
+Cascade candidate limit              :1000.000
+Cascade activation functions[0]      :   FANN_SIGMOID
+Cascade activation functions[1]      :   FANN_SIGMOID_SYMMETRIC
+Cascade activation functions[2]      :   FANN_GAUSSIAN
+Cascade activation functions[3]      :   FANN_GAUSSIAN_SYMMETRIC
+Cascade activation functions[4]      :   FANN_ELLIOT
+Cascade activation functions[5]      :   FANN_ELLIOT_SYMMETRIC
+Cascade activation functions[6]      :   FANN_SIN_SYMMETRIC
+Cascade activation functions[7]      :   FANN_COS_SYMMETRIC
+Cascade activation functions[8]      :   FANN_SIN
+Cascade activation functions[9]      :   FANN_COS
+Cascade activation steepnesses[0]    :   0.250
+Cascade activation steepnesses[1]    :   0.500
+Cascade activation steepnesses[2]    :   0.750
+Cascade activation steepnesses[3]    :   1.000
+Cascade candidate groups             :   2
+Cascade no. of candidates            :  80
+Testing network.
+XOR test (-1.000000, -1.000000) -> -0.994789, should be -1.000000, difference=0.005211
+XOR test (-1.000000, 1.000000) -> 0.993131, should be 1.000000, difference=0.006869
+XOR test (1.000000, -1.000000) -> 0.996434, should be 1.000000, difference=0.003566
+XOR test (1.000000, 1.000000) -> -0.993053, should be -1.000000, difference=0.006947
+Cleaning up.
 ```
