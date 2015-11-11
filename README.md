@@ -64,6 +64,8 @@ For more information about FANN, please refer to the [FANN website](http://leeni
 
 ## This Fork (modified by mkc):
 
+## Build
+
 Ex. 
 
 ```shell
