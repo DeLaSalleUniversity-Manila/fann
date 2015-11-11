@@ -62,7 +62,7 @@ To get started with FANN, go to the [FANN help site](http://leenissen.dk/fann/wp
 
 For more information about FANN, please refer to the [FANN website](http://leenissen.dk/fann/wp/)
 
-## This Fork:
+## This Fork (modified by mkc):
 
 Ex. 
 
