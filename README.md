@@ -105,7 +105,7 @@ $ cmake .
 -- Looking for pthread_create in pthread - found
 -- Found Threads: TRUE  
 -- Performing Test COMPILER_SUPPORTS_CXX14
--- Performing Test COMPILER_SUPPORTS_CXX14 - Failed
+-- Performing Test COMPILER_SUPPORTS_CXX14 - Success
 -- Performing Test COMPILER_SUPPORTS_CXX11
 -- Performing Test COMPILER_SUPPORTS_CXX11 - Success
 -- Performing Test COMPILER_SUPPORTS_CXX0X
