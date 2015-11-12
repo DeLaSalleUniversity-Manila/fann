@@ -427,6 +427,30 @@ Install the project...
 ```
 
 
+### Compiled Examples:
+
+```shell
+[root@cobalt fann]# ls bin/
+Guitar.exe  Guitar.exe.config  Win32  x64
+[root@cobalt fann]# ls bin/x64/
+cascade_traind.exe  gtest.lib                 simple_train_floatd.exe
+cascade_train.exe   momentumsd.exe            simple_train_float.exe
+fanndoubled.dll     momentums.exe             steepness_traind.exe
+fanndoubled.lib     mushroomd.exe             steepness_train.exe
+fanndouble.dll      mushroom.exe              tests_floatd.exe
+fanndouble.lib      parallel_traind.exe       tests_float.exe
+fannfixedd.dll      parallel_train.exe        xor_cpp_sampled.exe
+fannfixedd.lib      robotd.exe                xor_cpp_sample.exe
+fannfixed.dll       robot.exe                 xor.data
+fannfixed.lib       scaling_testd.exe         xor_test_fixedd.exe
+fannfloatd.dll      scaling_test.exe          xor_test_fixed.exe
+fannfloatd.lib      scaling_traind.exe        xor_test_floatd.exe
+fannfloat.dll       scaling_train.exe         xor_test_float.exe
+fannfloat.lib       simple_train_doubled.exe  xor_traind.exe
+gtestd.lib          simple_train_double.exe   xor_train.exe
+```
+
+
 
 ### XOR Sample Train:
 
