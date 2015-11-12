@@ -358,8 +358,6 @@ TODO: look for a better solution...
 ### Final Successful Install:
 
 ```shell
-[root@cobalt fann]# make j8
-make: *** No rule to make target `j8'.  Stop.
 [root@cobalt fann]# make -j8
 [  7%] [ 15%] [ 30%] Built target fixedfann
 Built target gtest
