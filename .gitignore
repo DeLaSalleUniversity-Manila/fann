@@ -16,6 +16,7 @@ Release
 /bin/xor_test_fixedd.exe
 /bin/xor_test_floatd.exe
 /bin/xor_traind.exe
+/bin/x64/*.*
 Makefile
 CMakeFiles
 CMakeCache.txt
