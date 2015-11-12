@@ -341,9 +341,17 @@ make: *** [all] Error 2
 [root@cobalt fann]# 
 ```
 
-### Ugly hack:
+### Ugly hack: 
+
+In 'fann/tests/fann_test_train.cpp'
+
 ```cpp
-net.train((fann_type[]) {0.0, 0.0}, (fann_type[]) {0.0});
+for(int i = 0; i < 100000; i++) {
+        net.train((fann_type*)(const fann_type[]) {0.0, 0.0}, (fann_type*)(const fann_type[]) {0.0});
+        net.train((fann_type*)(const fann_type[]) {1.0, 0.0}, (fann_type*)(const fann_type[]) {1.0});
+        net.train((fann_type*)(const fann_type[]) {0.0, 1.0}, (fann_type*)(const fann_type[]){1.0});
+        net.train((fann_type*)(const fann_type[]) {1.0, 1.0}, (fann_type*)(const fann_type[]){0.0});
+    }
 ```
 TODO: look for a better solution...
 
